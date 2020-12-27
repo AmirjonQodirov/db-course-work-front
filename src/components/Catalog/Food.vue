@@ -1,7 +1,9 @@
 <template>
     <div class="food">
         <div class="name">
-            {{food_data.name}}
+            <b>
+                {{food_data.name}}
+            </b>
         </div>
         <div class="img">
             <img class="food_image" src="../../../src/assets/p3.jpg" alt="food_img">
@@ -30,7 +32,7 @@
         },
         methods: {
             addToBasket() {
-                this.$emit('addToBasket', this.food_data.name)
+                this.$emit('addToBasket', this.food_data.id)
             }
         }
     }

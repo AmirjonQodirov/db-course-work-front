@@ -33,12 +33,11 @@ export default {
     background-color: #fff;
   }
   .footer{
-    margin-top: 0;
     width: 100%;
     background-color: #9C999A;
     height: calc(10vh);
     position: relative;
-    font-size: 2.22vh;
+    font-size: 1.4vw;
   }
   .footer-item1{
     position: absolute;

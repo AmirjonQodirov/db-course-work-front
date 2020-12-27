@@ -1,12 +1,15 @@
 <template>
     <div class="catalog">
-        <br/>
-        <h1 align="center">Каталог колбасных изделий</h1>
-        <br/>
+        <Header/>
+        <div class="title_catalog">
+            <br>
+            <h1 align="center">Каталог колбасных изделий</h1>
+            <br>
+        </div>
         <div class="catalog_list">
             <food
                 v-for="product in PRODUCTS"
-                :key="product.name"
+                :key="product.id"
                 :food_data="product"
                 @addToBasket="addToBasket"
             />
@@ -17,9 +20,10 @@
 <script>
     import Food from "./Food";
     import {mapActions, mapGetters} from 'vuex'
+    import Header from "../Header";
     export default {
         name: "Catalog",
-        components: {Food},
+        components: {Header, Food},
         computed: {
             ...mapGetters([
                 'PRODUCTS',
@@ -30,8 +34,8 @@
             ...mapActions([
                 "GET_PRODUCTS_FROM_API",
             ]),
-            addToBasket(name){
-                console.log(name);
+            addToBasket(id){
+                console.log(id);
             }
         },
         mounted() {
@@ -41,7 +45,15 @@
 </script>
 
 <style scoped>
+    .title_catalog{
+        background-color: #110505;
+        color: white;
+    }
     .catalog_list{
+        background-image: url("../../assets/p2.jpg");
+        background-repeat: no-repeat;
+        width: 100%;
+        background-size: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;

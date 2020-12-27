@@ -1,25 +1,54 @@
 {
   "products": [
     {
-      "name": "Картошка фри",
-      "price": 80.0,
+      "id": 1,
+      "name": "Краковская",
+      "price": 1200.0,
       "quantity" : 1
     },
     {
-      "name": "Плов",
-      "price": 52.75,
+      "id": 2,
+      "name": "Таллинская",
+      "price": 1250.0,
       "quantity" : 1
     },
     {
-      "name": "Шурпа",
-      "price": 70.0,
+      "id": 3,
+      "name": "Одесская",
+      "price": 1500.0,
       "quantity" : 1
     },
     {
-      "name": "Роллтон",
-      "price": 15.55,
+      "id": 4,
+      "name": "Украинская",
+      "price": 1300.5,
+      "quantity" : 1
+    },
+    {
+      "id": 5,
+      "name": "Краковская",
+      "price": 1200.0,
+      "quantity" : 1
+    },
+    {
+      "id": 6,
+      "name": "Таллинская",
+      "price": 1250.0,
+      "quantity" : 1
+    },
+    {
+      "id": 7,
+      "name": "Одесская",
+      "price": 1500.0,
+      "quantity" : 1
+    },
+    {
+      "id": 8,
+      "name": "Украинская",
+      "price": 1300.5,
       "quantity" : 1
     }
+
   ]
 
 }
