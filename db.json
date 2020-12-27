@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "name": "Картошка фри",
+      "price": 80.0,
+      "quantity" : 1
+    },
+    {
+      "name": "Плов",
+      "price": 52.75,
+      "quantity" : 1
+    },
+    {
+      "name": "Шурпа",
+      "price": 70.0,
+      "quantity" : 1
+    },
+    {
+      "name": "Роллтон",
+      "price": 15.55,
+      "quantity" : 1
+    }
+  ]
+
+}
