@@ -50,6 +50,10 @@
                 repassword: null
             }
         },
+        mounted() {
+            localStorage.removeItem('fillUserInfo');
+            localStorage.removeItem('currentUser');
+        },
         methods: {
             checkForm: function () {
                 this.errors = [];
