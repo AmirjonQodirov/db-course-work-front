@@ -22,13 +22,23 @@
                 </router-link>
             </div>
         </div>
+        <p class="bsk_sz">{{BASKET.length}}</p>
     </div>
 </template>
 
 <script>
+    import {mapGetters} from "vuex";
+
     export default {
-        name: "Header"
+        name: "Header",
+
+        computed: {
+            ...mapGetters([
+                'BASKET',
+            ]),
+        },
     }
+
 </script>
 
 <style scoped>
@@ -61,7 +71,14 @@
         width: 10vh;
         margin-left: calc(100% - 15vh);
         cursor: pointer;
-
+    }
+    .bsk_sz{
+        width: 4vh;
+        position: absolute;
+        margin-left: calc(100% - 5vh);
+        font-size: 2vw;
+        text-align: center;
+        margin-top: 5vh;
     }
 
     .user_logo{

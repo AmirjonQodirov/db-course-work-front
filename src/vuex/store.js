@@ -18,15 +18,36 @@ let store = new Vuex.Store({
         REM_FROM_BASKET: (state, id) => {
             state.basket.splice(id, 1);
         },
+        SET_FOOD_BASKET: (state, products) => {
+            let isSubExists = false;
+            if (state.basket.length) {
+                state.basket.map(function (item) {
+                    if (item.id === products.id) {
+                        isSubExists = true;
+                        if (item.quantity < 10) {
+                            item.quantity++
+                        }
+                    }
+                })
+                if (!isSubExists) {
+                    state.basket.push(products)
+                }
+            } else {
+                state.basket.push(products)
+            }
+        },
         DECREMENT_ITEM_FROM_BASKET: (state, id) => {
             if (state.basket[id].quantity > 1) {
                 state.basket[id].quantity--
             }
         },
         INCREMENT_ITEM_FROM_BASKET: (state, id) => {
-            if (state.basket[id].quantity < 10) {
+            if (state.basket[id].quantity < 20) {
                 state.basket[id].quantity++
             }
+        },
+        CLEAR_BASKET: (state) => {
+            state.basket = [];
         },
 
     },
@@ -51,6 +72,12 @@ let store = new Vuex.Store({
         DECREMENT({commit}, id) {
             commit('DECREMENT_ITEM_FROM_BASKET', id)
         },
+        ADD_PRODUCT_TO_BASKET({commit}, products) {
+            commit('SET_FOOD_BASKET', products);
+        },
+        CLEAR_BASKET({commit}){
+            commit('CLEAR_BASKET');
+        }
 
     },
     getters: {

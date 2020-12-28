@@ -11,7 +11,6 @@
                 v-for="product in PRODUCTS"
                 :key="product.id"
                 :food_data="product"
-                @addToBasket="addToBasket"
             />
         </div>
     </div>
@@ -33,10 +32,9 @@
         methods: {
             ...mapActions([
                 "GET_PRODUCTS_FROM_API",
+                "ADD_PRODUCT_TO_BASKET"
             ]),
-            addToBasket(id){
-                console.log(id);
-            }
+
         },
         mounted() {
             this.GET_PRODUCTS_FROM_API();

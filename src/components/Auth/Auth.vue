@@ -76,7 +76,7 @@
                     }
                 }
                 if (!this.errors.length) {
-                    if (this.action === 'register') {
+                    if (this.action === 'register   ') {
                         if (this.registerRequest()) {
                             this.loginRequest();
                         }
@@ -87,16 +87,48 @@
                 }
             },
             loginRequest: function () {
-                this.success = 'Успешно!';
-                localStorage.setItem('currentUser', this.name);
+                localStorage.setItem('currentUser', this.name + '#' + this.password);
                 this.$router.push('/catalog');
-
-                return true;
+                /*
+                let auth = this.name + '#' + this.password;
+                this.axios({
+                    method: 'post',
+                    url: 'http://localhost:12888/login',
+                    headers: {'Content_type': 'application/json', 'Authorization':  auth}
+                }).then(response => {
+                    this.response = response;
+                    localStorage.setItem('currentUser', response.data);
+                    this.$router.push('/catalog');
+                    return true;
+                }).catch(error => {
+                    error.response.status === 401 ? this.errors.push('Неверный логин или пароль') : this.errors.push('Ошибка авторизации');
+                    return false;
+                });
+                */
             },
             registerRequest: function () {
                 console.log(this.name);
                 console.log(this.password);
                 console.log(this.repassword);
+                /*
+                this.axios({
+                    method: 'post',
+                    url: 'http://localhost:12888/register',
+                    headers: {'Content_type': 'application/json'},
+                    data: {
+                        username: this.name,
+                        password: this.password
+                    }
+                }).then(() => {
+                    this.action = "login";
+                    this.loginRequest();
+                    return true;
+                }).catch(error => {
+                    error.response.status === 409 ? this.errors.push('Имя пользователя занято') : this.errors.push('Ошибка регистрации');
+                    return false;
+                });
+                */
+
                 return true;
             },
         }

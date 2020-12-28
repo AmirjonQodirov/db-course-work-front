@@ -20,6 +20,8 @@
 </template>
 
 <script>
+    import {mapActions, mapGetters} from "vuex";
+
     export default {
         name: "Food",
         props: {
@@ -30,9 +32,19 @@
                 }
             }
         },
+        computed: {
+            ...mapGetters([
+                'PRODUCTS',
+            ]),
+        },
+
+
         methods: {
+            ...mapActions([
+                "ADD_PRODUCT_TO_BASKET"
+            ]),
             addToBasket() {
-                this.$emit('addToBasket', this.food_data.id)
+                this.ADD_PRODUCT_TO_BASKET(this.food_data)
             }
         }
     }

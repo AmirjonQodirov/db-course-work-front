@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Auth from "../components/Auth/Auth";
 import Catalog from "../components/Catalog/Catalog";
-import Basket from "../components/User/Basket";
+import Basket from "../components/User/Basket/Basket";
 import Orders from "../components/User/Orders";
 import UserInfo from "../components/User/UserInfo";
 
