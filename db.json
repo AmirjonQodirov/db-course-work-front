@@ -49,6 +49,29 @@
       "quantity" : 1
     }
 
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "provider_name": "Иван",
+      "factory_name": "Фактори 1",
+      "pay_status" : false,
+      "dept_status": false
+    },
+    {
+      "id": 1332,
+      "provider_name": "Диван",
+      "factory_name": "Фактори 2",
+      "pay_status" : true,
+      "dept_status": false
+    },
+    {
+      "id": 2596,
+      "provider_name": "Биван",
+      "factory_name": "Фактори 3",
+      "pay_status" : true,
+      "dept_status": true
+    }
   ]
 
 }

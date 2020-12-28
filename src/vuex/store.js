@@ -10,6 +10,7 @@ let store = new Vuex.Store({
     state: {
         products: [],
         basket: [],
+        orders: []
     },
     mutations: {
         SET_PRODUCTS_TO_STATE: (state, products) => {
@@ -36,6 +37,9 @@ let store = new Vuex.Store({
                 state.basket.push(products)
             }
         },
+        SET_ORDER_TO_STATE: (state, orders) => {
+            state.orders = orders;
+        },
         DECREMENT_ITEM_FROM_BASKET: (state, id) => {
             if (state.basket[id].quantity > 1) {
                 state.basket[id].quantity--
@@ -53,11 +57,25 @@ let store = new Vuex.Store({
     },
     actions: {
         GET_PRODUCTS_FROM_API({commit}) {
+            let auth = localStorage.getItem('currentUser');
             return axios('http://localhost:3000/products', {
-                method: "GET"
+                method: "GET",
+                Authorization: auth
             })
                 .then((products) => {
                     commit('SET_PRODUCTS_TO_STATE', products.data);
+                }).catch((error) => {
+                    console.log(error);
+                })
+        },
+        GET_ORDER_FROM_API({commit}) {
+            let auth = localStorage.getItem('currentUser');
+            return axios('http://localhost:3000/orders', {
+                method: "GET",
+                Authorization: auth
+            })
+                .then((orders) => {
+                    commit('SET_ORDER_TO_STATE', orders.data);
                 }).catch((error) => {
                     console.log(error);
                 })
@@ -86,6 +104,9 @@ let store = new Vuex.Store({
         },
         BASKET(state) {
             return state.basket;
+        },
+        ORDERS(state) {
+            return state.orders;
         },
     }
 });
