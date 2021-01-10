@@ -49,6 +49,7 @@
         },
         props: {
         },
+
         computed: {
             ...mapGetters([
                 'BASKET',

@@ -49,6 +49,9 @@
                 this.$emit('increment')
             }
         },
+        mounted() {
+            this.$set(this.food_to_Basket,'quantity',1);
+        },
     }
 </script>
 
