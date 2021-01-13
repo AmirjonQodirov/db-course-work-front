@@ -33,7 +33,7 @@ let router = new Router({
             }
         },
         {
-            path: '/orders',
+            path: '/my_orders',
             name: 'orders',
             component: Orders,
             meta: {

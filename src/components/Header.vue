@@ -17,7 +17,7 @@
                 <router-link class="text_decor" to="/basket">
                     Карзина
                 </router-link>
-                <router-link class="text_decor" to="/orders">
+                <router-link class="text_decor" to="/my_orders">
                     Заказы
                 </router-link>
             </div>
