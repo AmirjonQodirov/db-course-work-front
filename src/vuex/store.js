@@ -10,7 +10,8 @@ let store = new Vuex.Store({
     state: {
         products: [],
         basket: [],
-        orders: []
+        orders: [],
+        payments: []
     },
     mutations: {
         SET_PRODUCTS_TO_STATE: (state, products) => {
@@ -40,6 +41,9 @@ let store = new Vuex.Store({
         SET_ORDER_TO_STATE: (state, orders) => {
             state.orders = orders;
         },
+        SET_PAYMENTS_TO_STATE: (state, payments) => {
+            state.payments = payments;
+        },
         DECREMENT_ITEM_FROM_BASKET: (state, id) => {
             if (state.basket[id].quantity > 1) {
                 state.basket[id].quantity--
@@ -58,9 +62,10 @@ let store = new Vuex.Store({
     actions: {
         GET_PRODUCTS_FROM_API({commit}) {
             let auth = localStorage.getItem('currentUser');
-            return axios('http://localhost:3000/products', {
+            return axios('http://localhost:12888/products', {
                 method: "GET",
-                Authorization: auth
+                headers: {'Authorization': auth}
+
             })
                 .then((products) => {
                     commit('SET_PRODUCTS_TO_STATE', products.data);
@@ -70,12 +75,24 @@ let store = new Vuex.Store({
         },
         GET_ORDER_FROM_API({commit}) {
             let auth = localStorage.getItem('currentUser');
-            return axios('http://localhost:3000/orders', {
+            return axios('http://localhost:12888/get_orders', {
                 method: "GET",
-                Authorization: auth
+                headers: {'Authorization': auth}
             })
                 .then((orders) => {
                     commit('SET_ORDER_TO_STATE', orders.data);
+                }).catch((error) => {
+                    console.log(error);
+                })
+        },
+        GET_PAYMENTS_FROM_API({commit}) {
+            let auth = localStorage.getItem('currentUser');
+            return axios('http://localhost:12888/payment', {
+                method: "GET",
+                headers: {'Authorization': auth}
+            })
+                .then((payments) => {
+                    commit('SET_PAYMENTS_TO_STATE', payments.data);
                 }).catch((error) => {
                     console.log(error);
                 })
@@ -107,6 +124,9 @@ let store = new Vuex.Store({
         },
         ORDERS(state) {
             return state.orders;
+        },
+        PAYMENTS(state) {
+            return state.payments;
         },
     }
 });

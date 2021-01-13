@@ -14,26 +14,54 @@
             <table class="table">
                 <thead>
                     <tr class="table_th">
-                        <th>Заказ №</th>
                         <th>Поставщик</th>
                         <th>Цех</th>
-                        <th>Статус оплаты</th>
-                        <th>Статус долга</th>
+                        <th>Колбаска</th>
+                        <th>Колбаска вес</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="order in ORDERS" :key="order.id">
-                        <td>{{ order.id }}</td>
-                        <td>{{ order.provider_name }}</td>
-                        <td>{{ order.factory_name }}</td>
-                        <td v-if="order.pay_status" class="green">Товар оплачен</td>
-                        <td v-else class="red">Товар не оплачен</td>
-                        <td v-if="order.dept_status" class="green">Нет долгов</td>
-                        <td v-else class="red">Долг</td>
+                        <td>{{ order.providerName }}</td>
+                        <td>{{ order.factoryName }}</td>
+                        <td>{{ order.sausageName }}</td>
+                        <td>{{ order.sausageWeight }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <div class="order_catalog">
+            <br>
+            <h1 align="center">Данные о долгах</h1>
+            <br>
+            <hr>
+            <br v-if="!PAYMENTS.length">
+            <h3 v-if="!PAYMENTS.length">Нeт данных о долгах</h3>
+            <br v-if="!PAYMENTS.length">
+        </div>
+        <div class="order_div">
+            <table class="table">
+                <thead>
+                <tr class="table_th">
+                    <th>ДАТА</th>
+                    <th>Сумма</th>
+                    <th>Статус долга</th>
+                    <th>Дата погашения</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="payment in PAYMENTS" :key="payment.deptDate">
+                    <td>{{ (new Date(payment.deptDate)).toLocaleDateString('ru-RU')}}</td>
+                    <td>{{ payment.sum }}</td>
+                    <td v-if="payment.paying" class="green">Нет долгов</td>
+                    <td v-else class="red">Долг</td>
+                    <td>{{ payment.payingDate }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <br>
     </div>
 </template>
 
@@ -46,16 +74,24 @@
         computed: {
             ...mapGetters([
                 'ORDERS',
+                'PAYMENTS'
             ]),
+        },
+        data(){
+            return{
+               kol: 0
+            }
         },
         methods: {
             ...mapActions([
                 "GET_ORDER_FROM_API",
+                "GET_PAYMENTS_FROM_API"
             ]),
 
         },
         mounted() {
             this.GET_ORDER_FROM_API();
+            this.GET_PAYMENTS_FROM_API();
         }
     }
 </script>
@@ -70,7 +106,7 @@
         color: black;
     }
     .order{
-        height: 90vh;
+        /*height: 190vh;*/
         background-color: #000;
     }
     .order_catalog{

@@ -49,7 +49,6 @@
         },
         props: {
         },
-
         computed: {
             ...mapGetters([
                 'BASKET',
@@ -94,25 +93,26 @@
                     if (this.BASKET.length) {
                         for (let item of this.BASKET) {
                             foods.push({
-                                id: item.id,
-                                cnt: item.quantity
+                                sausageId: item.id,
+                                sausageName: item.name,
+                                sausageWeight: item.quantity
                             });
                         }
                     }
                     console.log(auth, foods)
-                    /*запрос
-                    this.axios({
+                    this.$axios({
                         method: 'post',
-                        url: 'http://localhost:12888/order',
+                        url: 'http://localhost:12888/orders',
                         headers: {
                             'Content-Type': 'application/json',
                             'Accept': 'application/json',
                             'Authorization': auth
                         },
-                        data: {foods: foods}
+                        data: foods
                     }).then(response => alert(response.data));
-                    */
-                }else{
+
+                }
+                else{
                     alert("Заполните информацию о себе!")
                 }
             }
