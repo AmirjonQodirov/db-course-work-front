@@ -49,7 +49,7 @@ let router = new Router({
             }
         },
         {
-            path: '*',
+            path: '/*',
             redirect: '/auth'
         },
     ]
