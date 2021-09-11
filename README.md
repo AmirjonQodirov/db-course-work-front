@@ -1,24 +1,5 @@
 # db_front
 
-## Project setup
-```
-npm install
-```
+UI layout in figma
+https://www.figma.com/file/79DBSSOA5OGTf3hb8MfHZA/BD?node-id=0%3A1
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
